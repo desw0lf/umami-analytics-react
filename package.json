@@ -1,0 +1,31 @@
+{
+  "name": "umami-analytics-react",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "homepage": "https://github.com/desw0lf/umami-analytics-react#readme",
+  "files": ["dist", "LICENSE", "README.md"],
+  "scripts": {
+    "build": "tsc --build",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "@types/react": ">=18.0.0",
+    "@types/react-dom": ">=18.0.0"
+  },
+  "author": "deswolf",
+  "license": "ISC",
+  "description": "React hooks (useUmami, useUmamiView) and UmamiProvider for seamless Umami analytics integration, supporting page views, custom event tracking, and session identification.",
+  "keywords": ["umami", "umami.is", "react", "spa", "vite"]
+}

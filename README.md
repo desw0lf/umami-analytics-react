@@ -1,0 +1,2 @@
+# umami-analytics-react
+Integrate Umami analytics in React easily: Use `UmamiProvider` for setup, call the `useUmamiView` hook to track page views (ideal for route changes), and use the `useUmami` hook for custom events and session identification.

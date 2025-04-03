@@ -1,0 +1,10 @@
+node_modules
+package-lock.json
+.DS_Store
+.nvmrc
+src
+.vscode
+CHANGELOG.md
+.github
+tsconfig.json
+*.tsbuildinfo
