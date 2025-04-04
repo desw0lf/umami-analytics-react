@@ -19,6 +19,7 @@ export function getEnhancedIdentity(
     systemTheme: matchMedia("(prefers-color-scheme: dark)") ? "dark" : "light",
     prefersReducedMotion: matchMedia("(prefers-reduced-motion: reduce)"),
     isTouchDevice: "ontouchstart" in window || navigator.maxTouchPoints > 0 || matchMedia("(pointer: coarse)"),
+    zoomLevel: Math.round(window.outerWidth / window.innerWidth * 100)
   };
 
   if (keyListOrToggle === true) {

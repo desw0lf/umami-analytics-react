@@ -267,6 +267,7 @@ When `appendEnhancedPayload` is `true` or an array of keys (default: `false`), t
 - systemTheme: `"light"` or `"dark"`
 - prefersReducedMotion: `true` or `false`
 - isTouchDevice: `true` or `false`
+- zoomLevel: _e.g., `100`_
 
 <details>
 <summary><h3>5. Manual Script Loading</h3></summary>
@@ -316,7 +317,7 @@ The provider component that enables Umami tracking within its children.
 
  - `scriptSrc?: string`: URL of the Umami tracker script. Defaults to `https://cloud.umami.is/script.js`.
 
- - `scriptAttributes?: Record<string, string | number | boolean | undefined | null>`: Additional attributes to add to the script tag (e.g., `data-tag`, `data-domains`). See [Umami Docs (tracker configuration)](https://umami.is/docs/tracker-configuration). _(`data-website-id` is handled internally_).
+ - `scriptAttributes?: object`: Additional attributes to add to the script tag (e.g., `data-tag`, `data-domains`). See [Umami Docs (tracker configuration)](https://umami.is/docs/tracker-configuration). _(`data-website-id` is handled internally_).
 
  - `autoLoad?: boolean`: Whether to load the script automatically on mount. Defaults to `true`.
 
@@ -335,7 +336,7 @@ The provider component that enables Umami tracking within its children.
 
  - `register: (config?) => void`: Manually triggers the loading of the Umami script. Can optionally override provider config (`websiteId`, `scriptSrc`, `scriptAttributes`). Only needed if `autoLoad={false}`.
 
- - `umamiRef: MutableRefObject<Umami | null>`: A React ref containing the loaded `window.umami` object, or `null` if not loaded yet. Use with caution.
+ - `umamiRef: RefObject<Umami | null>`: A React ref containing the loaded `window.umami` object, or `null` if not loaded yet. Use with caution.
 
 ### `useUmamiView(viewDependencies?, payload?)`
 Hook to simplify tracking events (typically page views) based on dependency changes or component mount. Essentially wraps a call to `track()` within a `useEffect`. Requires `data-auto-track="false"` on the provider if used for page view tracking to avoid duplicates.

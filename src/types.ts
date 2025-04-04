@@ -34,4 +34,5 @@ export interface EnhancedIdentifyPayload {
   systemTheme: string;
   prefersReducedMotion: boolean;
   isTouchDevice: boolean;
+  zoomLevel: number;
 }
