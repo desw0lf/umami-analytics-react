@@ -55,10 +55,13 @@ Umami offers built-in automatic page view tracking. However, for more precise co
 #### Method 1: Automatic (via Umami script)
 This is the default behavior if you do **not** disable it. The standard Umami tracker `script.js` automatically tracks page views based on browser history changes (using the History API).
 
+<details>
+<summary>Details</summary>
 
  - **Pros**: No extra code needed beyond the `UmamiProvider` setup. Works well for traditional multi-page websites.
  - **Cons**: None, unless incompatible with your SPA's routing approach.
  - **How to use**: Simply use the `<UmamiProvider>` **without** setting `data-auto-track` to `false`.
+</details>
 
 ```jsx
 // Uses Umami's built-in automatic tracking
@@ -73,6 +76,9 @@ This method gives you fine-grained control over _when_ a page view is tracked, s
 It requires **disabling** the default Umami script auto-tracking.
 <br/><br/>
 
+<details>
+<summary>Details</summary>
+
  - **Pros**: Reliable tracking aligned with your application's routing logic. Tracks views exactly when your components signal a navigation change. Can track custom event data alongside the view.
  - **Cons**: Requires adding the `useUmamiView` hook in your code.
  - **How to use**:
@@ -80,6 +86,7 @@ It requires **disabling** the default Umami script auto-tracking.
     2. Call `useUmamiView` in a component that renders across all routes (like your main `App` or a layout component).
     3. Pass values that change with navigation (e.g., `location.pathname`, `location.search`) to its dependency array (`viewDependencies`).
     4. **(Optional)** Provide a payload (object or mapper function) as the second argument to track specific event data when the dependencies change. If no payload is provided, it defaults to tracking a standard page view.
+</details>
 
 ```jsx
 // Example using React Router
@@ -141,6 +148,9 @@ This method allows you to explicitly trigger a page view track when a specific c
 It also requires **disabling** the default Umami script auto-tracking.
 <br/><br/>
 
+<details>
+<summary>Details</summary>
+
  - **Pros**:
     1. **Explicit Control**: Track views precisely when specific components mount.
     2. **Selective Tracking**: Useful if you only want to track views for a small subset of pages/components.
@@ -150,6 +160,7 @@ It also requires **disabling** the default Umami script auto-tracking.
     1. Disable default tracking by adding `scriptAttributes={{ "data-auto-track": false }}` to your `<UmamiProvider>`.
     2. Call `useUmamiView` without any dependencies inside each component that represents a trackable page or view.
     3. **(Optional)** Provide a payload (object or mapper function) as the second argument to track specific event data on mount. If no payload is provided, it defaults to tracking a standard page view.
+</details>
 
 ```jsx
 // Example: src/components/ImportantModal.tsx
@@ -259,6 +270,7 @@ When `appendEnhancedPayload` is `true` or an array of keys (default: `false`), t
 
 <details>
 <summary><h3>5. Manual Script Loading</h3></summary>
+
 If you prefer to control exactly when the Umami script loads, set `autoLoad={false}` on the `UmamiProvider` and call the `register` function obtained from `useUmami` when ready.
 
 ```jsx
