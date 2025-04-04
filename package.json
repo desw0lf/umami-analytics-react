@@ -12,8 +12,7 @@
   "homepage": "https://github.com/desw0lf/umami-analytics-react#readme",
   "files": ["dist", "LICENSE", "README.md"],
   "scripts": {
-    "build": "tsc --build",
-    "prepublishOnly": "npm run build"
+    "build": "tsc --build"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
