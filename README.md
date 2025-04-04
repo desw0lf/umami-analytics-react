@@ -316,7 +316,7 @@ The provider component that enables Umami tracking within its children.
 
  - `scriptSrc?: string`: URL of the Umami tracker script. Defaults to `https://cloud.umami.is/script.js`.
 
- - `scriptAttributes?: Record<string, string | number | boolean | undefined | null>`: Additional attributes to add to the script tag (e.g., `data-tag`, `data-domains`). See [Umami Docs (tracker configuration)](https://umami.is/docs/tracker-configuration). _(`data-website-id` and `data-auto-track` are handled internally_).
+ - `scriptAttributes?: Record<string, string | number | boolean | undefined | null>`: Additional attributes to add to the script tag (e.g., `data-tag`, `data-domains`). See [Umami Docs (tracker configuration)](https://umami.is/docs/tracker-configuration). _(`data-website-id` is handled internally_).
 
  - `autoLoad?: boolean`: Whether to load the script automatically on mount. Defaults to `true`.
 
