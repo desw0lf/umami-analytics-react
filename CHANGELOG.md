@@ -1,1 +1,1 @@
-- initial release
+- add initial `zoomLevel` to enhanced identify
