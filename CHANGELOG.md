@@ -1,1 +1,1 @@
-- add initial `zoomLevel` to enhanced identify
+- Typescript support for `umami.track(unique_id, ...)` (umami v2.18.0)
