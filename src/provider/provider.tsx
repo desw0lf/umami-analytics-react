@@ -2,7 +2,6 @@ import { useEffect, useRef, useCallback } from "react";
 import { UmamiProviderContext } from "./context";
 import { createScript } from "../utils/create-script";
 import { tryUmami } from "../utils/try-umami";
-import { getEnhancedIdentity } from "../utils/get-enhanced-identity";
 import type { EnhancedIdentifyPayload, Umami, UmamiExtended, UmamiPayload, UmamiRegisterConfig } from "../types";
 
 type UmamiProviderProps = {
@@ -74,16 +73,7 @@ export function UmamiProvider({
 
   const track: UmamiExtended["track"] = useCallback((...args: any[]) => onUmamiInvoke("track", args), [onUmamiInvoke]);
 
-  const identify: UmamiExtended["identify"] = useCallback(
-    (payloadOrId: UmamiPayload<any> | string | number, payloadOrEnhanced?: UmamiPayload<any> | boolean | (keyof EnhancedIdentifyPayload)[] | null, enhanced?: boolean | (keyof EnhancedIdentifyPayload)[] | null) => {
-      const uid = typeof payloadOrId === "string" || typeof payloadOrId === "number" ? payloadOrId : undefined;
-      const payload = typeof uid === "undefined" ? payloadOrId as UmamiPayload<any> : payloadOrEnhanced as UmamiPayload<any>;
-      const appendEnhancedPayload = typeof uid === "undefined" ? payloadOrEnhanced as boolean | (keyof EnhancedIdentifyPayload)[] | null | undefined : enhanced;
-      const pay: UmamiPayload<any> = { ...getEnhancedIdentity(appendEnhancedPayload), ...payload };
-      onUmamiInvoke("identify", uid ? [uid, pay] : [pay]);
-    },
-    [onUmamiInvoke]
-  );
+  const identify: UmamiExtended["identify"] = useCallback((...args: any[]) => onUmamiInvoke("identify", args), [onUmamiInvoke]);
 
   const view: UmamiExtended["view"] = useCallback((...args: any[]) => onUmamiInvoke("track", args), [onUmamiInvoke]);
 

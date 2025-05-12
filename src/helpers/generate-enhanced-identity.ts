@@ -1,12 +1,12 @@
 import type { EnhancedIdentifyPayload } from "../types";
 
-export function getEnhancedIdentity(
-  keyListOrToggle?: boolean | null | (keyof EnhancedIdentifyPayload)[],
+export function generateEnhancedIdentity(
+  keyList?: (keyof EnhancedIdentifyPayload)[],
   defaultValue = "unknown"
 ): Partial<EnhancedIdentifyPayload> {
-  const isArray = Array.isArray(keyListOrToggle);
+  const isArray = Array.isArray(keyList);
 
-  if (!keyListOrToggle || (isArray && keyListOrToggle.length === 0)) {
+  if (isArray && keyList.length === 0) {
     return {};
   }
 
@@ -22,19 +22,15 @@ export function getEnhancedIdentity(
     zoomLevel: Math.round(window.outerWidth / window.innerWidth * 100)
   };
 
-  if (keyListOrToggle === true) {
+  if (!isArray) {
     return allValues;
   }
 
-  if (isArray) {
-    return keyListOrToggle.reduce(
-      (acc, key) => {
-        acc[key] = allValues[key];
-        return acc;
-      },
-      {} as Record<string, any>
-    );
-  }
-
-  return {};
+  return keyList.reduce(
+    (acc, key) => {
+      acc[key] = allValues[key];
+      return acc;
+    },
+    {} as Record<string, any>
+  );
 }

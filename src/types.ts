@@ -22,11 +22,7 @@ export interface Umami {
   track: SimplePayloadSignature & TrackOnlySignature & MapperSignature;
 }
 
-type EnhancedIdentifySignature = <T>(payload: UmamiPayload<T>, appendEnhancedPayload?: boolean | null | (keyof EnhancedIdentifyPayload)[]) => void;
-type EnhancedIdentifyWithUniqueIdSignature = <T>(uniqueId: string | number, payload?: UmamiPayload<T>, appendEnhancedPayload?: boolean | null | (keyof EnhancedIdentifyPayload)[]) => void;
-
 export interface UmamiExtended extends Umami {
-  identify: EnhancedIdentifySignature & EnhancedIdentifyWithUniqueIdSignature;
   view: ViewOnlySignature & MapperSignature; // 0 to 1 args
 }
 

@@ -330,7 +330,7 @@ The provider component that enables Umami tracking within its children.
 
  - `track: (eventNameOrPayload, payload?) => void`: Tracks a custom event.
  
- - `identify: (payload, appendEnhancedPayload?) => void`: Associates data with the current session. `appendEnhancedPayload` can be `true` to add all enhanced data, or an array of specific keys (`'timezone'`, `'systemTheme'`, etc.).
+ - `identify: (payloadOrUniqueId, payload?) => void`: Associates data with the current session. `appendEnhancedPayload` can be `true` to add all enhanced data, or an array of specific keys (`'timezone'`, `'systemTheme'`, etc.).
 
  - `view: () => void`: Tracks a page view. Usually called automatically by `useUmamiView`. _(Internally calls `track()`)_.
 
@@ -350,7 +350,8 @@ Hook to simplify tracking events (typically page views) based on dependency chan
    - A mapper function that receives default properties and returns an event data object.
    - If omitted, a standard page view is tracked (equivalent to calling `track()` with no arguments).
 
-
+ ### `generateEnhancedIdentity()`
+ Helper function which generates some basic additional enhanced payload for the `identify` method. Has the ability to filter which values to include (`'timezone'`, `'systemTheme'`, etc.). Example: `identify("john@sampleemail.com", { ...generateEnhancedIdentity(), myOtherCustom: "blue" })`
 
 
 ## License
