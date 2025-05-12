@@ -1,1 +1,1 @@
-- Typescript support for `umami.track(unique_id, ...)` (umami v2.18.0)
+- `generateEnhancedIdentity()` exported as a optional separate helper function, instead of incorporating into the core provider functionality
