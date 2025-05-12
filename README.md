@@ -226,22 +226,22 @@ Use the `useUmami` hook to get access to the `identify` function. This allows yo
 import { useUmami } from "umami-analytics-react";
 
 function UserProfile() {
-  const { identify } = useUmami();
+  const { identify, generateEnhancedIdentity } = useUmami();
 
   const handleLogin = (userId: string, role: string) => {
     // Identify the user with custom data
-    identify({ userId, role });
+    identify(userId, { role });
   };
 
   const identifyWithEnhancedData = () => {
     // Identify with custom data AND automatically appended browser/device info
     // (timezone, theme, reduced motion preference, touch device, connection type)
-    identify({ customData: "example" }, true);
+    identify({ ...generateEnhancedIdentity(), customData: "example" });
   };
 
   const identifyWithSpecificEnhancedData = () => {
     // Identify with custom data AND only specific enhanced info
-    identify({ customData: "example" }, ["timezone", "systemTheme"]);
+    identify({ ...generateEnhancedIdentity(["timezone", "systemTheme"]), customData: "example" });
   };
 
   return (
@@ -259,7 +259,7 @@ function UserProfile() {
 
 **Enhanced Identify Properties:**
 
-When `appendEnhancedPayload` is `true` or an array of keys (default: `false`), the following properties (if available) can be added:
+When using `generateEnhancedIdentity` helper function, the following properties (if available) can be added:
 
 - timezone: _e.g., `"Europe/London"`_
 - timezoneOffset: _e.g., `60`_
